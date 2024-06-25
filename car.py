@@ -9,11 +9,14 @@ class Car():
                 ) -> None:
         self.name = name
         self.year = year
-        self.__sign__ = sign
         self.speed = speed
         self.consumption = consumption
         self.tank_size = tank_size
+        
+        self.__sign__ = sign
         self.__fuel__ = 20.0
+
+
     def calculate_time(self, distance: float) -> float:
         """Calculate time needed to travel distance.
         Parameters:
@@ -25,6 +28,7 @@ class Car():
             float:                      [Time needed to travel that distance]
         """
         return distance / self.speed
+
 
     def register(self, new_sign_number: str) -> bool:
         """Check if new sign is valid and register it if yes.
@@ -53,6 +57,7 @@ class Car():
             return True
         return False
 
+
     def fill(self, fuel_amount: float) -> None:
         """Fill car tank with the amount specified.
 
@@ -63,12 +68,10 @@ class Car():
         ----------
             fuel_amount (float):        [Amount needed to be filled]
         """
-        if fuel_amount < 0:
-            self.__fuel__ += fuel_amount
+        self.__fuel__ = (self.__fuel_ + self.fuel_amount,self.tank_size)
         if self.__fuel__ > self.tank_size:
             self.__fuel__ = self.tank_size
         print(f'Tank filled to   {self.__fuel__} liter, Tank size:{self.tank_size} liters')
-
 
 
     def go(self, distance: float) -> bool:
@@ -87,7 +90,10 @@ class Car():
         --------
             bool:                      [Traveled or not]
         """
+
+
     # # # # # # # # # # # # # # # # # # GETTERS # # # # # # # # # # # # # # # # # #
+
 
     def get_sign(self) -> str:
         """Return car registration sign."""
@@ -114,7 +120,7 @@ print(distance_travel)
 registered = car.register("99AA999")
 print(registered)
 
-car.fill(30)
+car.fill(-30)
 
 get_sign1 = car.get_sign()
 print(get_sign1)
